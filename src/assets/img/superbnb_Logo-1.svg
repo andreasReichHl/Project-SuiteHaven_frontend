@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180.58 67.41" width="120" height="60">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #e83d60;
+        font-family: ArialMT, Arial;
+        font-size: 24px;
+        letter-spacing: .01em;
+        stroke-width: .25px;
+      }
+
+      .cls-1, .cls-2 {
+        stroke: #e83d60;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke-width: 2px;
+      }
+    </style>
+  </defs>
+  <g>
+    <text/>
+    <path class="cls-2" d="m12.44,33.71c-6.32,0-11.44-4.42-11.44-9.88s5.12-9.88,11.44-9.88"/>
+    <line class="cls-2" x1="59.56" y1="13.95" x2="12.44" y2="13.95"/>
+    <path class="cls-2" d="m59.56,13.95c2.04,0,3.69,1.43,3.69,3.19s-1.65,3.19-3.69,3.19"/>
+    <polyline class="cls-2" points="11.87 20.32 12.32 20.32 23.14 20.32 59.56 20.32"/>
+    <path class="cls-2" d="m12.32,27.33c-2.24,0-4.06-1.57-4.06-3.51s1.82-3.51,4.06-3.51"/>
+    <polyline class="cls-2" points="12.32 27.33 23.14 27.33 39.98 27.33"/>
+    <text/>
+    <path class="cls-2" d="m51.81,33.71c6.32,0,11.44,4.42,11.44,9.88s-5.12,9.88-11.44,9.88"/>
+    <line class="cls-2" x1="4.69" y1="53.46" x2="51.81" y2="53.46"/>
+    <path class="cls-2" d="m4.69,47.09c-2.04,0-3.69,1.43-3.69,3.19s1.65,3.19,3.69,3.19"/>
+    <polyline class="cls-2" points="4.69 47.09 41.11 47.09 51.93 47.09 52.38 47.09"/>
+    <path class="cls-2" d="m51.93,40.08c2.24,0,4.06,1.57,4.06,3.51s-1.82,3.51-4.06,3.51"/>
+    <polyline class="cls-2" points="51.81 33.71 12.44 33.71 11.87 33.71"/>
+    <polyline class="cls-2" points="24.27 40.08 35.09 40.08 51.93 40.08"/>
+  </g>
+  <text class="cls-1" transform="translate(74.87 40.11)"><tspan x="0" y="0">Superbnb</tspan></text>
+</svg>
