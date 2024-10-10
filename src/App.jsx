@@ -7,7 +7,7 @@ function App() {
 
     return (
         <>
-            <img src={SuperbnbLogo} alt="SuperBnB Logo" />
+            <img className="pl-5" src={SuperbnbLogo} alt="SuperBnB Logo" />
             <RegisterCard />
         </>
     );
