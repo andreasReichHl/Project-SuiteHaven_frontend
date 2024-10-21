@@ -125,7 +125,7 @@ export default function RegisterCard(e) {
                     <Button
                         className="bg-customBlue p-5 pl-3 pr-3 rounded-md text-xl w-full justify-items-end text-customFrenchGray font-Roboto disabled:bg-customPlatinum disabled:cursor-not-allowed "
                         onClick={handleSubmit}
-                        isValidat={isValidat}
+                        isValidat={isValidat ||!firstname ||!lastname ||!email}
                         submit="Registrieren"
                     />
                 </div>
