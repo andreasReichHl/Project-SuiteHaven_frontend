@@ -12,8 +12,21 @@ export default function RegisterCard(e) {
     const [message, setMessage] = useState("");
     const [isValidat, setValidad] = useState(false);
     const [emailValidat, setEmailValidat] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
+
+    const inputFieds = [
+        { placeholder: "Vorname", type: "text", onChange: setFirstname },
+        { placeholder: "Nachname", type: "text", onChange: setLastname },
+        { placeholder: "Email", type: "text", onChange: setEmail },
+        { placeholder: "Passwort", type: "password", onChange: setPassword },
+        {
+            placeholder: "Wiederholung Passwort",
+            type: "password",
+            onChange: setConfimPassword,
+        },
+    ];
 
     const validateEmail = (email) => {
         return String(email)
@@ -45,45 +58,45 @@ export default function RegisterCard(e) {
 
     console.log(import.meta.env.VITE_BACKEND_URL);
 
-    async function handleSubmit() {
+    const handleSubmit = async () => {
         const userData = {
             firstname: firstname,
             lastname: lastname,
             email: email,
             password: password,
         };
-        console.log(userData);
-        fetch(import.meta.env.VITE_BACKEND + "/auth/newHost", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(userData),
-        })
-            .then((response) => {
-                if (response.ok) {
-                    console.log("Host wurde erfolgreich angelegt");
-                    navigate("/registryDone");
-                } else if (response.status === 409) {
-                    console.error(
-                        "Registration failed: Benutzer existiert bereits."
-                    );
-                } else {
-                    console.error(
-                        "Registration failed with status: " + response.status
-                    );
+
+        setLoading(true); // Setze Ladezustand auf true
+        try {
+            const response = await fetch(
+                import.meta.env.VITE_BACKEND + "/auth/newHost",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(userData),
                 }
-            })
-            .catch((error) => {
-                console.error("Error:", error);
-            });
-    }
+            );
 
-    function login() {
-        const encoded = btoa(email + ":" + password);
-
-        fetch;
-    }
+            if (response.ok) {
+                console.log("Host wurde erfolgreich angelegt");
+                navigate("/registryDone");
+            } else if (response.status === 409) {
+                console.error(
+                    "Registration failed: Benutzer existiert bereits."
+                );
+            } else {
+                console.error(
+                    "Registration failed with status: " + response.status
+                );
+            }
+        } catch (error) {
+            console.error("Error:", error);
+        } finally {
+            setLoading(false); // Setze Ladezustand auf false
+        }
+    };
 
     return (
         <div className="flex justify-center pl-10 pr-10">
@@ -92,42 +105,34 @@ export default function RegisterCard(e) {
                     Gastgeber Registrierung
                 </h2>
                 <div>
-                    <InputField
-                        placeholder={"Vorname"}
-                        type={"text"}
-                        onChange={(e) => setFirstname(e.target.value)}
-                    />
+                    {inputFieds.map((field, index) => (
+                        <InputField
+                            key={index}
+                            placeholder={field.placeholder}
+                            type={field.type}
+                            onChange={(e) => field.onChange(e.target.value)}
+                        />
+                    ))}
 
-                    <InputField
-                        onChange={(e) => setLastname(e.target.value)}
-                        type={"text"}
-                        placeholder={"Nachname"}
-                    />
-
-                    <InputField
-                        onChange={(e) => setEmail(e.target.value)}
-                        type={"email"}
-                        placeholder={"Email"}
-                    />
-
-                    <InputField
-                        onChange={(e) => setPassword(e.target.value)}
-                        type="password"
-                        placeholder="Passwort"
-                    />
-
-                    <InputField
-                        onChange={(e) => setConfimPassword(e.target.value)}
-                        type="password"
-                        placeholder="Wiederholung Passwort"
-                    />
                     <p className="mb-2 text-red-700">{message}</p>
-                    <Button
+                    <button
                         className="bg-customBlue p-5 pl-3 pr-3 rounded-md text-xl w-full justify-items-end text-customFrenchGray font-Roboto disabled:bg-customPlatinum disabled:cursor-not-allowed "
                         onClick={handleSubmit}
-                        isValidat={isValidat ||!firstname ||!lastname ||!email}
+                        disabled={
+                            isValidat ||
+                            !firstname ||
+                            !lastname ||
+                            !email ||
+                            !emailValidat
+                        }
                         submit="Registrieren"
-                    />
+                    >
+                        {loading ? (
+                            <span className="loading loading-spinner"></span>
+                        ) : (
+                            "Registrieren"
+                        )}
+                    </button>
                 </div>
             </div>
         </div>
