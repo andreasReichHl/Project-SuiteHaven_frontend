@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180.58 67.41" width="130" height="100">
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <defs>
     <style>
-      .cls-1 {
-        fill: #1985A1;
-        font-family: ArialMT, Arial;
-        font-size: 24px;
-        letter-spacing: .01em;
-        stroke-width: .25px;
-      }
-
       .cls-1, .cls-2 {
         stroke: #1985A1;
-        stroke-miter limit: 10;
+        stroke-miterlimit: 10;
       }
 
       .cls-2 {
@@ -38,5 +30,4 @@
     <polyline class="cls-2" points="51.81 33.71 12.44 33.71 11.87 33.71"/>
     <polyline class="cls-2" points="24.27 40.08 35.09 40.08 51.93 40.08"/>
   </g>
-  <text class="cls-1" transform="translate(0 85.11)"><tspan x="0" y="0">SuiteHaven</tspan></text>
 </svg>
