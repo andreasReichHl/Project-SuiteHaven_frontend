@@ -42,7 +42,7 @@ export default function RegisterCard(e) {
         } else {
             setEmailValidat(false);
         }
-    }, [email]);
+    }, [email,confirmPassword]);
 
     useEffect(() => {
         if (confirmPassword != "") {
@@ -56,7 +56,6 @@ export default function RegisterCard(e) {
         }
     }, [confirmPassword, email]);
 
-    console.log(import.meta.env.VITE_BACKEND_URL);
 
     const handleSubmit = async () => {
         const userData = {
@@ -94,7 +93,7 @@ export default function RegisterCard(e) {
         } catch (error) {
             console.error("Error:", error);
         } finally {
-            setLoading(false); // Setze Ladezustand auf false
+            setLoading(false); 
         }
     };
 
@@ -119,7 +118,7 @@ export default function RegisterCard(e) {
                         className="bg-customBlue p-5 pl-3 pr-3 rounded-md text-xl w-full justify-items-end text-customFrenchGray font-Roboto disabled:bg-customPlatinum disabled:cursor-not-allowed "
                         onClick={handleSubmit}
                         disabled={
-                            isValidat ||
+                            !isValidat ||
                             !firstname ||
                             !lastname ||
                             !email ||
