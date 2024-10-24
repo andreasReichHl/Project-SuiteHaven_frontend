@@ -11,7 +11,8 @@ import RegisterCard from "./assets/components/RegisterCard.jsx";
 import RegistryDone from "./assets/pages/RegistryDone.jsx";
 import Forwarding from "./assets/pages/Forwarding.jsx";
 import Dashboard from "./assets/pages/Dashboard.jsx";
-import LoginPages from "./assets/pages/Login.jsx";
+import LoginPages from "./assets/components/Login.jsx";
+import AuthenticationPage from "./assets/pages/AuthenticationPage.jsx";
 
 const ProtectRoute = ({ children }) => {
     const token = localStorage.getItem("token");
@@ -26,22 +27,37 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "register",
-                element: <RegisterCard />,
+                element: <AuthenticationPage />,
+                children: [
+                    {
+                        path: "",
+                        element: (
+                            <RegisterCard head={"Gastgeber Registrierung"} />
+                        ),
+                    },
+                ],
             },
             {
-                path: "/dashboard",
+                path: "dashboard",
                 element: (
                     <ProtectRoute>
                         <Dashboard />
                     </ProtectRoute>
                 ),
             },
+            {
+                path: "login",
+                element: <AuthenticationPage />,
+                children: [
+                    {
+                        path: "",
+                        element: <LoginPages head={"Gastgeber Login"} />,
+                    },
+                ],
+            },
         ],
     },
-    {
-        path: "/login",
-        element: <LoginPages />,
-    },
+
     {
         path: "/registryDone",
         element: <RegistryDone />,

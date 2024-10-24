@@ -2,16 +2,15 @@ import { useEffect, useState } from "react";
 import InputField from "./InputField";
 import { useNavigate } from "react-router-dom";
 
-export default function RegisterCard(e) {
-    e.preventDefault;
+export default function RegisterCard(props) {
     const [firstname, setFirstname] = useState("");
     const [lastname, setLastname] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfimPassword] = useState("");
     const [message, setMessage] = useState("");
-    const [isValidat, setValidad] = useState(false);
-    const [emailValidat, setEmailValidat] = useState(false);
+    const [isValidat, setValidad] = useState(true);
+    const [emailValidat, setEmailValidat] = useState(true);
     const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
@@ -42,10 +41,10 @@ export default function RegisterCard(e) {
         } else {
             setEmailValidat(false);
         }
-    }, [email, confirmPassword]);
+    }, [email]);
 
     useEffect(() => {
-        if (confirmPassword != "") {
+        if (confirmPassword !== "" && email !== "") {
             if (password != confirmPassword) {
                 setMessage("Passwörter simmen nicht überein!");
                 setValidad(true);
@@ -97,42 +96,40 @@ export default function RegisterCard(e) {
     };
 
     return (
-        <div className="flex justify-center pl-10 pr-10">
-            <div className="w-full rounded-md  md:w-1/2 md:shadow-gray-300 md:shadow-md md:p-5 pt-0 md:border-customPlatinum md:border">
-                <h2 className="mb-8 text-3xl text-customOuterSpace">
-                    Gastgeber Registrierung
-                </h2>
-                <div>
-                    {inputFields.map((field, index) => (
-                        <InputField
-                            key={index}
-                            placeholder={field.placeholder}
-                            type={field.type}
-                            onChange={(e) => field.onChange(e.target.value)}
-                        />
-                    ))}
+        <>
+            <h2 className="mb-8 text-3xl text-customOuterSpace">
+                {props.head}
+            </h2>
+            <div>
+                {inputFields.map((field, index) => (
+                    <InputField
+                        key={index}
+                        placeholder={field.placeholder}
+                        type={field.type}
+                        onChange={(e) => field.onChange(e.target.value)}
+                    />
+                ))}
 
-                    <p className="mb-2 text-red-700">{message}</p>
-                    <button
-                        className="bg-customBlue p-5 pl-3 pr-3 rounded-md text-xl w-full justify-items-end text-customFrenchGray font-Roboto disabled:bg-customPlatinum disabled:cursor-not-allowed "
-                        onClick={handleSubmit}
-                        disabled={
-                            isValidat ||
-                            !firstname ||
-                            !lastname ||
-                            !email ||
-                            !emailValidat
-                        }
-                        submit="Registrieren"
-                    >
-                        {loading ? (
-                            <span className="loading loading-spinner"></span>
-                        ) : (
-                            "Registrieren"
-                        )}
-                    </button>
-                </div>
+                <p className="mb-2 text-red-700">{message}</p>
+                <button
+                    className="bg-customBlue p-5 pl-3 pr-3 rounded-md text-xl w-full justify-items-end text-customFrenchGray font-Roboto disabled:bg-customPlatinum disabled:cursor-not-allowed "
+                    onClick={handleSubmit}
+                    disabled={
+                        isValidat ||
+                        !firstname ||
+                        !lastname ||
+                        !email ||
+                        !emailValidat
+                    }
+                    submit="Registrieren"
+                >
+                    {loading ? (
+                        <span className="loading loading-spinner"></span>
+                    ) : (
+                        "Registrieren"
+                    )}
+                </button>
             </div>
-        </div>
+        </>
     );
 }

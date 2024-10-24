@@ -1,8 +1,8 @@
 import { useState } from "react";
-import InputField from "../components/InputField";
+import InputField from "./InputField";
 import { Link, useNavigate } from "react-router-dom";
 
-export default function Login() {
+export default function Login(props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
@@ -45,6 +45,9 @@ export default function Login() {
 
     return (
         <div>
+            <h2 className="mb-8 text-3xl text-customOuterSpace">
+                {props.head}
+            </h2>
             {inputFields.map((field, index) => (
                 <InputField
                     key={index}
