@@ -11,7 +11,7 @@ import RegisterCard from "./assets/components/RegisterCard.jsx";
 import RegistryDone from "./assets/pages/RegistryDone.jsx";
 import Forwarding from "./assets/pages/Forwarding.jsx";
 import Dashboard from "./assets/pages/Dashboard.jsx";
-import LoginPages from "./assets/pages/LoginPage.jsx";
+import LoginPages from "./assets/pages/Login.jsx";
 
 const ProtectRoute = ({ children }) => {
     const token = localStorage.getItem("token");

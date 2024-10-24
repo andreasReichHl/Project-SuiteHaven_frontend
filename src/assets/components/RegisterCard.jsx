@@ -16,7 +16,7 @@ export default function RegisterCard(e) {
 
     const navigate = useNavigate();
 
-    const inputFieds = [
+    const inputFields = [
         { placeholder: "Vorname", type: "text", onChange: setFirstname },
         { placeholder: "Nachname", type: "text", onChange: setLastname },
         { placeholder: "Email", type: "text", onChange: setEmail },
@@ -103,7 +103,7 @@ export default function RegisterCard(e) {
                     Gastgeber Registrierung
                 </h2>
                 <div>
-                    {inputFieds.map((field, index) => (
+                    {inputFields.map((field, index) => (
                         <InputField
                             key={index}
                             placeholder={field.placeholder}
