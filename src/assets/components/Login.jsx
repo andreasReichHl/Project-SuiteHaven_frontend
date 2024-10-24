@@ -58,7 +58,7 @@ export default function Login(props) {
             ))}
             <p>{errorMessage}</p>
             <button
-                className="bg-customBlue p-5 pl-3 pr-3 rounded-md text-xl w-full justify-items-end text-customFrenchGray font-Roboto disabled:bg-customPlatinum disabled:cursor-not-allowed "
+                className="bg-customBlue p-5 pl-3 pr-3 rounded-md text-xl w-full justify-items-end text-customFrenchGray font-Roboto disabled:bg-customPlatinum disabled:cursor-not-allowed mb-5"
                 onClick={login}
                 disabled={!email || !password}
             >

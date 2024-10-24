@@ -1,4 +1,4 @@
-import { StrictMode } from "react";
+import { StrictMode, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
@@ -13,12 +13,7 @@ import Forwarding from "./assets/pages/Forwarding.jsx";
 import Dashboard from "./assets/pages/Dashboard.jsx";
 import LoginPages from "./assets/components/Login.jsx";
 import AuthenticationPage from "./assets/pages/AuthenticationPage.jsx";
-
-const ProtectRoute = ({ children }) => {
-    const token = localStorage.getItem("token");
-
-    return token ? children : <Navigate to="/login" />;
-};
+import ProtectRoute from "./assets/components/ProtectRoute.jsx";
 
 const router = createBrowserRouter([
     {
