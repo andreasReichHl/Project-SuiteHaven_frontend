@@ -18,22 +18,22 @@ export default function PageOneQuery({
 
     return (
         <>
-            <div className="grid lg:grid-cols-2">
+            <div className="flex">
                 <div className="m-auto pl-10">
-                    <h2 className="text-3xl mb-5">Schritt 1</h2>
+                    <h2 className="text-2xl mb-5">Schritt 1</h2>
                     <h3 className="text-7xl mb-5">
                         Erzähl uns von deiner Unterkunft
                     </h3>
                     <p>
                         In diesem Schritt fragen würden wir gerne wissen, wo
                         sich deine Unterkunft befindet, was deine Gäste erwarten
-                        können und danach, ob Gästen die gesamte Unterkunft
-                        oder nur ein Zimmer zur Verfügung steht. Anschließend
-                        und wie viele Personen bei dir übernachten können.
+                        können und danach, ob Gästen die gesamte Unterkunft oder
+                        nur ein Zimmer zur Verfügung steht. Anschließend und wie
+                        viele Personen bei dir übernachten können.
                     </p>
                 </div>
-                <div className="px-10 lg:px-16  w-full">
-                    <div className=" ">
+                <div className="px-10 lg:px-16 w-full flex-grow">
+                    <div className=" h-full">
                         {inputFields.map((field, index) => (
                             <InputFieldAdvertisment
                                 key={index}
@@ -43,7 +43,7 @@ export default function PageOneQuery({
                             />
                         ))}
                         <textarea
-                            className="text-xl md:text-md mt-1 block w-full px-3 py-4 h-72 bg-white border border-customPayne rounded-md shadow-sm placeholder-slate-400 focus:outline-none focus:border-customBlue mb-4"
+                            className="text-xl md:text-md mt-1 block w-full h-96 px-3 py-4 bg-white border border-customPayne rounded-md shadow-sm placeholder-slate-400 focus:outline-none focus:border-customBlue mb-4 resize-none"
                             placeholder="Beschreibung"
                             onChange={(e) => setDescription(e.target.value)}
                         ></textarea>

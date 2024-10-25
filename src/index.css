@@ -13,3 +13,11 @@
         @apply font-Roboto;
     }
 }
+
+.customWidth {
+    width: 50vw;
+}
+
+.customWidthbox {
+    width: 45vw;
+}
