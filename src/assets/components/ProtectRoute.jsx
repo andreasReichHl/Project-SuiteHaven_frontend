@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const ProtectRoute = ({ children }) => {
-    const [auth, setAuth] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [auth, setAuth] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -17,23 +18,19 @@ const ProtectRoute = ({ children }) => {
             })
             .catch((error) => {
                 setAuth(false);
-            });
+            })
+            .finally(() => setLoading(false));
     }, []);
 
-    useEffect(() => {
-        if (auth === false) {
-            navigate("/login");
-        }
-    }, [auth, navigate]);
-
-    if (auth === null)
+    if (loading)
         return (
-            <div>
-                <span className="loading loading-dots loading-lg"></span>
+            <div className="flex justify-center">
+                <span className="loading loading-dots loading-md bg-customBlue m-auto"></span>
             </div>
         );
 
-    return auth ? children : null;
+    if (!auth) return <Navigate to="/login" />;
+    else return <>{children}</>;
 };
 
 export default ProtectRoute;

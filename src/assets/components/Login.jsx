@@ -20,22 +20,23 @@ export default function Login(props) {
 
         const encoded = btoa(email + ":" + password);
         try {
-            await fetch(import.meta.env.VITE_BACKEND + "/auth/signIn", {
-                method: "POST",
-                headers: { Authorization: "Basic " + encoded },
-            }).then((response) => {
-                if (response.ok) {
-                    const data = response.json();
-                    localStorage.setItem("token", data.token);
-                    navigate("/dashboard");
-                } else if (response.status === 401) {
-                    setErrorMessage("Benutzername oder Passwort falsch!");
-                } else if (response.status === 500) {
-                    setErrorMessage(
-                        "Serverfehler: Bitte später erneut versuchen!"
-                    );
+            const response = await fetch(
+                import.meta.env.VITE_BACKEND + "/auth/signIn",
+                {
+                    method: "POST",
+                    headers: { Authorization: "Basic " + encoded },
                 }
-            });
+            );
+
+            if (response.ok) {
+                const data = await response.json();
+                localStorage.setItem("token", data.token);
+                navigate("/dashboard");
+            } else if (response.status === 401) {
+                setErrorMessage("Benutzername oder Passwort falsch!");
+            } else if (response.status === 500) {
+                setErrorMessage("Serverfehler: Bitte später erneut versuchen!");
+            }
         } catch (error) {
             console.log("Error:", error);
         } finally {
