@@ -14,6 +14,7 @@ import Dashboard from "./assets/pages/Dashboard.jsx";
 import LoginPages from "./assets/components/Login.jsx";
 import AuthenticationPage from "./assets/pages/AuthenticationPage.jsx";
 import ProtectRoute from "./assets/components/ProtectRoute.jsx";
+import Advertisement from "./assets/pages/Advertisement.jsx";
 
 const router = createBrowserRouter([
     {
@@ -52,7 +53,14 @@ const router = createBrowserRouter([
             },
         ],
     },
-
+    {
+        path: "/become-a-host",
+        element: (
+            <ProtectRoute>
+                <Advertisement />
+            </ProtectRoute>
+        ),
+    },
     {
         path: "/registryDone",
         element: <RegistryDone />,

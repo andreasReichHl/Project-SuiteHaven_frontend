@@ -69,8 +69,9 @@ export default function Login(props) {
                     "Login"
                 )}
             </button>
-
-            <Link to="/dashboard">Passwort vergessen?</Link>
+            <div className="text-2xl flex justify-center">
+                <Link to="/dashboard">Passwort vergessen?</Link>
+            </div>
         </div>
     );
 }

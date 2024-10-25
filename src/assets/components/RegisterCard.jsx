@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import InputField from "./InputField";
-import { useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 export default function RegisterCard(props) {
     const [firstname, setFirstname] = useState("");
@@ -129,6 +129,10 @@ export default function RegisterCard(props) {
                         "Registrieren"
                     )}
                 </button>
+                <div className="text-2xl flex justify-center mt-10">
+                    <p className="pr-2">Sie haben bereits ein Konto?</p>
+                    <Link to="/login">Log In</Link>
+                </div>
             </div>
         </>
     );
