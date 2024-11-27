@@ -2,22 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @font-face {
-    font-family: "RobotoCondensed";
-    src: url("./assets/fonts/RobotoCondensed-VariableFont_wght.ttf");
-    font-size: 22px;
+  font-family: "RobotoCondensed";
+  src: url("./assets/fonts/RobotoCondensed-VariableFont_wght.ttf");
+  font-size: 22px;
 }
 
 @layer base {
-    body {
-        @apply font-Roboto;
-    }
+  body {
+    @apply font-Roboto;
+  }
 }
 
 .customWidth {
-    width: 50vw;
+  width: 50vw;
 }
 
 .customWidthbox {
-    width: 45vw;
+  width: 45vw;
 }

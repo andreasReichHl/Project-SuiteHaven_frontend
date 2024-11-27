@@ -11,7 +11,7 @@ export default function Advertisement() {
     const [person, setPerson] = useState(1);
     const [price, setPrice] = useState(0);
     const [cleaning, setCleaning] = useState(0);
-    const [bedrooms, setBedrooms] = useState(0);
+    const [bedrooms, setBedrooms] = useState(1);
     const [rooms, setRooms] = useState([]);
     const [kitchen, setKitchen] = useState(0);
     const [bath, setBath] = useState(0);
@@ -94,3 +94,4 @@ export default function Advertisement() {
         </>
     );
 }
+
